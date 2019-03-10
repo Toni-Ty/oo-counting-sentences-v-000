@@ -27,10 +27,20 @@ end
   end
 
   def count_sentences
-    binding.pry
-      self.split(/\.|\?|\!/).size #how does delete_if function here?
-      # below is also correct
-      # self.split(/\.|\?|\!/).delete_if {|w| w.size < 2}.size
+    # There are two exclamation point characters in the middle of this set of 3 sentences 
+    # ("This is too!!") so it splits the sentence right between the 2 exclam. points, 
+    # leaving an empty string that the delete_if method deletes, via the code between the 
+    # curly braces.  Last it returns the size of the sentence string.
+    self.split(/[.!?]/).delete_if {|x| x.empty?}.size 
+
+      # self.split(/[.!?]/).reject {|x| x.empty?}.size 
+      # above and below are also correct
+      # self.split(/\.|\?|\!/).delete_if {|w| w.size < 2}.size 
+      #For the code above, it deletes sentences that have a character size of less than 
+      # 2 characters and then returns the size of the sentence string.
+      # It appears that a higher number than 2 could've been chosen. 
+      # 
+
 
 
 
@@ -40,62 +50,3 @@ end
 end
 
 
-
-# require 'pry'
-# class Song
-#
-# attr_accessor :name, :artist, :genre
-#
-# @@count = 0
-# @@artists = []
-# @@genres = []
-#
-# def initialize (name, artist, genre)
-#   @name = name
-#   @genre = genre
-#   @artist = artist
-#
-#
-# @@count +=1
-# @@genres << genre
-# @@artists << artist
-# end
-#
-#
-# def self.count
-#   @@count
-#   end
-#
-# def self.genres
-#   @@genres.uniq
-#   end
-#
-#
-# def self.artists
-#   @@artists.uniq
-# end
-#
-# def self.genre_count
-#   genre_count = {}
-#   @@genres.each do |genre|
-#       if genre_count[genre] #if genre is already present in the hash
-#           genre_count[genre] +=1 #skip over and go to the next artist to evaluate
-#       else
-#         genre_count[genre] = 1 #if genre doesn't exist, add genre to the hash to be returned
-#       end
-#     end
-#     genre_count
-# end
-#
-# def self.artist_count
-#   artist_count = {}
-#   @@artists.each do |artist|
-#     if artist_count[artist]
-#        artist_count[artist] +=1
-#     else
-#       artist_count[artist] = 1
-#     end
-# end
-#       artist_count
-#     end
-# end
