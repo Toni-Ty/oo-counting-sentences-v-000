@@ -31,7 +31,7 @@ end
       self.split(/\.|\?|\!/).delete_if { |x| x.empty?}.size #how does delete_if function here?
       # below is also correct
       # self.split(/\.|\?|\!/).delete_if {|w| w.size < 2}.size
-  
+
 
 
 
