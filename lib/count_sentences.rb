@@ -11,7 +11,7 @@ class String
 end
 
   def question?
-    self.end_with?("?") #Didn't need to write true/false because the method appears to return it implicitly
+    self.end_with?("?") #Don't need to write true/false because the method appears to return it implicitly
     #   true
     # else
     #   false
@@ -28,6 +28,7 @@ end
 
   def count_sentences
       self.split(/\.|\?|\!/).delete_if { |x| x.empty?}.size
+      binding pry
       # below is also correct
       # self.split(/\.|\?|\!/).delete_if {|w| w.size < 2}.size
 
