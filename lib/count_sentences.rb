@@ -28,7 +28,6 @@ end
 
   def count_sentences
       self.split(/\.|\?|\!/).delete_if { |x| x.empty?}.size #how does delete_if function here?
-      binding.pry
       # below is also correct
       # self.split(/\.|\?|\!/).delete_if {|w| w.size < 2}.size
 
